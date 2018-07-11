@@ -24,7 +24,7 @@ namespace MoneyMvcHw.Controllers
         }
         public List<MoneyViewModel> GetFakeMoneyData(int iCount)
         {
-            var MoneyReport = new List<MoneyViewModel>();
+            var moneyReport = new List<MoneyViewModel>();
             for (int intA = 0; intA < iCount; intA++)
             {
                 var fakeData = new MoneyViewModel();
@@ -46,11 +46,11 @@ namespace MoneyMvcHw.Controllers
                         };
                     }
                     fakeData.Total = intA * 100;
-                    fakeData.Date = DateTime.Today.ToString("yyyy/MM/dd");
+                    fakeData.Date = DateTime.Today;
                 }
-                MoneyReport.Add(fakeData);
+                moneyReport.Add(fakeData);
             }
-            return MoneyReport;
+            return moneyReport;
         }
     }
 }
