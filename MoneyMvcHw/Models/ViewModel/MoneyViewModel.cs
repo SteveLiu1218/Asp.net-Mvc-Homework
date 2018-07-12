@@ -16,7 +16,7 @@ namespace MoneyMvcHw.Models.ViewModel
         public int Total { get; set; }
 
         [DisplayName("日期")]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         [DisplayName("備註")]
         public string Description { get; set; }
