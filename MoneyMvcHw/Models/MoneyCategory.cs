@@ -5,10 +5,9 @@ using System.Web;
 
 namespace MoneyMvcHw.Models
 {
-    public class MoneyCategory
+    public enum MoneyCategory
     {
-        public int Id { get; set; }
-        public string Category { get; set; }
-
+        支出,
+        收入
     }
 }

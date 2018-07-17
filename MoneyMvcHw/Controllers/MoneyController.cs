@@ -25,27 +25,20 @@ namespace MoneyMvcHw.Controllers
         public List<MoneyViewModel> GetFakeMoneyData(int iCount)
         {
             var moneyReport = new List<MoneyViewModel>();
-            for (int intA = 0; intA < iCount; intA++)
+            for (int i = 0; i < iCount; i++)
             {
                 var fakeData = new MoneyViewModel();
                 {
-                    if (intA % 2 == 0)
+                    if (i % 2 == 0)
                     {
-                        fakeData.Category = new MoneyCategory()
-                        {
-                            Id = 1,
-                            Category = "支出"
-                        };
+                        fakeData.Category = MoneyCategory.收入;
+                        
                     }
                     else
                     {
-                        fakeData.Category = new MoneyCategory()
-                        {
-                            Id = 2,
-                            Category = "收入"
-                        };
+                        fakeData.Category = MoneyCategory.支出;
                     }
-                    fakeData.Total = intA * 100;
+                    fakeData.Total = i * 100;
                     fakeData.Date = DateTime.Today;
                 }
                 moneyReport.Add(fakeData);
