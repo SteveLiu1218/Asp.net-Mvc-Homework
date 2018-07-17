@@ -22,10 +22,10 @@ namespace MoneyMvcHw.Controllers
             var fakeMoneyData = GetFakeMoneyData(50);
             return View(fakeMoneyData);
         }
-        public List<MoneyViewModel> GetFakeMoneyData(int iCount)
+        public List<MoneyViewModel> GetFakeMoneyData(int FakeDataCount)
         {
             var moneyReport = new List<MoneyViewModel>();
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < FakeDataCount; i++)
             {
                 var fakeData = new MoneyViewModel();
                 {
