@@ -19,31 +19,33 @@ namespace MoneyMvcHw.Controllers
         [ChildActionOnly]
         public ActionResult ReportMoney()
         {
-            var fakeMoneyData = GetFakeMoneyData(50);
-            return View(fakeMoneyData);
+            var MoneyData = new MoneyData();
+            var viewModel = MoneyData.GetFakeData().ToList();
+            //var fakeMoneyData = GetFakeMoneyData(50);
+            return View(viewModel);
         }
-        public List<MoneyViewModel> GetFakeMoneyData(int FakeDataCount)
-        {
-            var moneyReport = new List<MoneyViewModel>();
-            for (int i = 0; i < FakeDataCount; i++)
-            {
-                var fakeData = new MoneyViewModel();
-                {
-                    if (i % 2 == 0)
-                    {
-                        fakeData.Category = MoneyCategory.收入;
+        //public List<MoneyViewModel> GetFakeMoneyData(int FakeDataCount)
+        //{
+        //    var moneyReport = new List<MoneyViewModel>();
+        //    for (int i = 0; i < FakeDataCount; i++)
+        //    {
+        //        var fakeData = new MoneyViewModel();
+        //        {
+        //            if (i % 2 == 0)
+        //            {
+        //                fakeData.Category = MoneyCategory.收入;
                         
-                    }
-                    else
-                    {
-                        fakeData.Category = MoneyCategory.支出;
-                    }
-                    fakeData.Total = i * 100;
-                    fakeData.Date = DateTime.Today;
-                }
-                moneyReport.Add(fakeData);
-            }
-            return moneyReport;
-        }
+        //            }
+        //            else
+        //            {
+        //                fakeData.Category = MoneyCategory.支出;
+        //            }
+        //            fakeData.Total = i * 100;
+        //            fakeData.Date = DateTime.Today;
+        //        }
+        //        moneyReport.Add(fakeData);
+        //    }
+        //    return moneyReport;
+        //}
     }
 }
