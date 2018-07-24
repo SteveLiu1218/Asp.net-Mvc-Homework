@@ -5,11 +5,18 @@ using System.Web;
 using System.Web.Mvc;
 using MoneyMvcHw.Models;
 using MoneyMvcHw.Models.ViewModel;
+using MoneyMvcHw.Service;
 
 namespace MoneyMvcHw.Controllers
 {
     public class MoneyController : Controller
     {
+        private readonly MoneyService moneyService;
+
+        public MoneyController()
+        {
+            moneyService = new MoneyService();
+        }
         // GET: Money
         [Route("Money")]
         public ActionResult Index()
@@ -19,33 +26,27 @@ namespace MoneyMvcHw.Controllers
         [ChildActionOnly]
         public ActionResult ReportMoney()
         {
-            var MoneyData = new MoneyData();
-            var viewModel = MoneyData.GetFakeData().ToList();
-            //var fakeMoneyData = GetFakeMoneyData(50);
+            var viewModel = MoneyData.GetFakeData().ToList();            
             return View(viewModel);
         }
-        //public List<MoneyViewModel> GetFakeMoneyData(int FakeDataCount)
-        //{
-        //    var moneyReport = new List<MoneyViewModel>();
-        //    for (int i = 0; i < FakeDataCount; i++)
-        //    {
-        //        var fakeData = new MoneyViewModel();
-        //        {
-        //            if (i % 2 == 0)
-        //            {
-        //                fakeData.Category = MoneyCategory.收入;
-                        
-        //            }
-        //            else
-        //            {
-        //                fakeData.Category = MoneyCategory.支出;
-        //            }
-        //            fakeData.Total = i * 100;
-        //            fakeData.Date = DateTime.Today;
-        //        }
-        //        moneyReport.Add(fakeData);
-        //    }
-        //    return moneyReport;
-        //}
+
+        public ActionResult Creat()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Creat(MoneyViewModel moneyViewModel)
+        {
+            //Q1 驗證沒過之後 傳回
+            if (ModelState.IsValid)
+            {
+                moneyService.Add(moneyViewModel);
+                moneyService.Save();
+                return RedirectToAction("Index");
+            }            
+            return View("Index",moneyViewModel);
+        }
     }
 }

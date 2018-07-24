@@ -1,4 +1,5 @@
 ﻿@model List<MoneyMvcHw.Models.ViewModel.MoneyViewModel>
+@using MoneyMvcHw.Helper;
 @{
     Layout = null;
     int iTemp = 0;
@@ -15,7 +16,7 @@
             @foreach (var m in Model)
             {
                 iTemp++;
-                <tr>
+                <tr @Html.DisplayCategoryColor(m.Category)>
                     <td>@iTemp</td>
                     <td>@m.Category</td>
                     <td>@m.Date.ToString("yyyy-MM-dd")</td>

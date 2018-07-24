@@ -9,19 +9,18 @@ namespace MoneyMvcHw.Models
 {
     public class MoneyData
     {
-        public IEnumerable<MoneyViewModel> GetFakeData()
+        public static IEnumerable<MoneyViewModel> GetFakeData()
         {
-            ReportMoneyService reportMoneyService = new ReportMoneyService();
-            var query = from d in reportMoneyService.GetAll()
+            var moneyService = new MoneyService();
+            var query = from d in moneyService.GetAll()
                         select new MoneyViewModel
                         {
-                            Category = (MoneyCategory)d.Categoryyy,
-                            Total = d.Amounttt,
-                            Date = d.Dateee,
+                            Category    = (MoneyCategory)d.Categoryyy,
+                            Total       = d.Amounttt,
+                            Date        = d.Dateee,
                             Description = d.Remarkkk
                         };
             return query;
         }
-
     }
 }
