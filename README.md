@@ -12,16 +12,16 @@
 [Day2]
 ----
 1.請將記帳本呈現資料的部分改為真 DB !  
-2.可使用 EF , ADO.NET 任何一種操作資料庫的方式  
+2.可使用 EF , ADO.NET 任何一種操作資料庫的方式  [從資料庫Code first]
 3.不可改變第一天設計的 ViewModel   
 
-所有欄位必填
+所有欄位必填 (ValidationAttribute)
 
-1.「金額」只能輸入正整數  
-2.「日期」不得大於今天  
-3.「備註」最多輸入100個字元（備註為 TextArea）  
+1.「金額」只能輸入正整數  (ModelAttribute Range)
+2.「日期」不得大於今天  (自定義繼承ValidationAttribute 和 覆寫 IsValid)
+3.「備註」最多輸入100個字元（備註為 TextArea）  (Html.TextAreaFor() 
 
-列表加入顏色變換
+列表加入顏色變換 (用Helper來做)
 
 1.類型的「支出」字樣顯現為紅色  
 2.類型的「收入」字樣顯現為藍色  
@@ -33,4 +33,20 @@
 
 UnitOfWork  
 Repository
+
+[Day3]
+----
+1.日期欄位加入選擇器。
+
+2.金額必須用選的。
+
+3.增加管理專用的 Area
+
+4.管理員可以編輯所有的歷史資料
+
+5.非管理員進入會「跳回首頁」
+
+6.實做分頁功能
+
+7.此版本可以改變 ViewModel 原始的設計了
 
