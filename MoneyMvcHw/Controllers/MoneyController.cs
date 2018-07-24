@@ -38,8 +38,7 @@ namespace MoneyMvcHw.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Creat(MoneyViewModel moneyViewModel)
-        {
-            //Q1 驗證沒過之後 傳回
+        {            
             if (ModelState.IsValid)
             {
                 moneyService.Add(moneyViewModel);
